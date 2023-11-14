@@ -9,6 +9,7 @@
 .env.backup
 .env.production
 .git
+.gitignore
 /laravel_e_commerce/.phpunit.result.cache
 /laravel_e_commerce/Homestead.json
 /laravel_e_commerce/Homestead.yaml
