@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Storage;
 
 class UserController extends Controller
 {
@@ -35,13 +37,55 @@ class UserController extends Controller
         $validatedData = $request->validate([
             'name' => 'required|string|max:255',
             'email' => 'required|email|unique:users,email,'.$user->id,
-            // Add more validation rules as needed
+            'avatar' => 'image|mimes:jpeg,png,jpg,gif|max:2048', // Validate avatar file
         ]);
 
-        // Update the user's profile information
-        $user->update($validatedData);
+        // Handle avatar upload
+        if ($request->hasFile('avatar')) {
+            // Delete the current avatar if it exists
+            if ($user->avatar) {
+                Storage::disk('public')->delete($user->avatar);
+            }
+
+            // Generate a unique name for the avatar file
+            $avatarName = 'avatar_' . $user->id . '.' . $request->file('avatar')->getClientOriginalExtension();
+
+            // Store the uploaded avatar in the 'public/avatars' directory with the custom name
+            $avatarPath = $request->file('avatar')->storeAs('avatars', $avatarName, 'public');
+            $validatedData['avatar'] = $avatarPath; // Update the avatar path in the validated data
+            $user->avatar = $avatarPath; // Update the avatar path in the user model
+        }
+
+        // Update the user's profile information including the avatar path
+        $user->fill($validatedData);
+        $user->save();
 
         return redirect()->back()->with('success', 'Profile updated successfully!');
+    }
+
+    public function showPasswordUpdateForm()
+    {
+        return view('update-password');
+    }
+
+    public function updatePassword(Request $request)
+    {
+        $user = auth()->user();
+
+        $validatedData = $request->validate([
+            'current_password' => 'required',
+            'new_password' => 'required|string|min:8|confirmed',
+        ]);
+
+        if (!Hash::check($request->current_password, $user->password)) {
+            return redirect()->back()->withErrors(['current_password' => 'The current password is incorrect.']);
+        }
+
+        $user->update([
+            'password' => Hash::make($request->new_password),
+        ]);
+
+        return redirect()->back()->with('success', 'Password updated successfully!');
     }
 
     /**
