@@ -7,7 +7,7 @@
             <p>Manage your profile:</p>
             <ul>
                 <li><a href="{{ route('profile') }}">Update Profile</a></li>
-                <!-- Add more links as needed -->
+                <li><a href="{{ route('password') }}">Update Password</a></li>
             </ul>
         @else
             <h1>Welcome to the user page</h1>

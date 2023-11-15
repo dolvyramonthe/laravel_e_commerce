@@ -56,4 +56,5 @@ Route::get('/user', [UserController::class, 'index'])->name('user')->middleware(
 Route::get('/profile', [UserController::class, 'showProfile'])->name('profile');
 Route::put('/profile/update', [UserController::class, 'updateProfile'])->name('profile.update');
 
-
+Route::get('/password', [UserController::class, 'showPasswordUpdateForm'])->name('password');
+Route::put('/password/update', [UserController::class, 'updatePassword'])->name('password.update');
