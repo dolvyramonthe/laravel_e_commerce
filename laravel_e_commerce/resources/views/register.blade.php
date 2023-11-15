@@ -2,9 +2,78 @@
 <html>
 <head>
     <title>Registration</title>
+    <style>
+        /* Styles pour le corps de la page */
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 20px; /* Ajoute une marge pour l'espace autour du contenu */
+            background-image: url("https://t3.ftcdn.net/jpg/04/64/30/76/360_F_464307620_CYWfA00cdwwtYPxXMfFpbTjVjaFYmP93.jpg");
+            background-size: cover;
+        }
+
+        /* Styles pour le formulaire */
+        form {
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            max-width: 400px;
+            margin: 0 auto;
+        }
+
+        h2 {
+            text-align: center;
+            color: #0066cc;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 5px;
+            color: #333;
+        }
+
+        input[type="text"],
+        input[type="email"],
+        input[type="password"] {
+            width: 100%;
+            padding: 8px;
+            margin-bottom: 10px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            box-sizing: border-box;
+        }
+
+        button[type="submit"] {
+            padding: 10px 20px;
+            background-color: #0066cc;
+            color: #fff;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+
+        button[type="submit"]:hover {
+            background-color: #0050a5;
+        }
+
+        p {
+            text-align: center;
+            margin-top: 10px;
+        }
+
+        p a {
+            color: #0066cc;
+            text-decoration: none;
+        }
+
+        p a:hover {
+            text-decoration: underline;
+        }
+    </style>
 </head>
 <body>
-    <h2>User Registration</h2>
+    <h2>Sign In</h2>
     @if ($errors->any())
         <div>
             <ul>
