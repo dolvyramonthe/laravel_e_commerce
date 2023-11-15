@@ -32,11 +32,11 @@
         }
 
         .user-image {
-            width: 100px; /* Ajustez la taille de l'image selon vos besoins */
+            width: 100px;
             height: 100px;
-            margin-bottom: 10px; /* Espacement entre l'image et le titre */
-            display: block; /* Permet de gérer l'affichage de l'image */
-            margin-left: auto; /* Centre l'image horizontalement */
+            margin-bottom: 10px;
+            display: block;
+            margin-left: auto;
             margin-right: auto;
         }
 
