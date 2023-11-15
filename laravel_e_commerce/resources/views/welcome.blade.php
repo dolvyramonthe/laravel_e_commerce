@@ -6,4 +6,3 @@
     <p>Please login to continue:</p>
 </div>
 @endsection
-
