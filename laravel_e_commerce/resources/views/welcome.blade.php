@@ -1,11 +1,11 @@
 @extends('layouts.header')
 
 @section('content')
-<div style="padding: 20px; background-color: #f4f4f4;">
+<div>
     <style>
             
             h1 {
-                color: #0066cc;
+                color: white;
                 font-size: 28px;
                 text-align: center;
             }
@@ -15,9 +15,8 @@
                 font-size: 16px;
                 text-align: center;
             }
-            
-            /* Ajoutez d'autres styles selon vos besoins */
         </style>
+        
     <h1>Welcome to the BubbleMyTea App</h1>
     <p>Please login to continue:</p>
 </div>
