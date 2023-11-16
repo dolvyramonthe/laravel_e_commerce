@@ -9,7 +9,7 @@ class LoginController extends Controller
 {
     public function showLoginForm()
     {
-        return view('login');
+        return view('users.login');
     }
 
     public function login(Request $request)
@@ -21,11 +21,20 @@ class LoginController extends Controller
 
         if (Auth::attempt($credentials)) {
             $user = Auth::user();
-            if ($user->role === 'admin') {
-                return redirect()->route('admin');
-            } elseif ($user->role === 'user') {
-                return redirect()->route('user');
+
+            if($user->isActive) {
+                if ($user->role === 'superadmin') {
+                    return redirect()->route('superadmin');
+                } else if ($user->role === 'admin') {
+                    return redirect()->route('admin');
+                } else if ($user->role === 'user') {
+                    return redirect()->route('user');
+                }
             }
+
+            return back()->withErrors([
+                'email' => 'Your account is blocked.',
+            ]);
         }
 
         return back()->withErrors([
