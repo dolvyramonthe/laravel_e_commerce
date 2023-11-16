@@ -23,16 +23,19 @@
                         <td>{{ $user->role }}</td>
                         <td>{{ $user->isActive === 1? "Active" : "Inactive" }}</td>
                         <td>
-                            <a href="{{ route('users.edit', $user->id) }}">Update</a>
-                            <form method="POST" action="{{ route('users.destroy', $user->id) }}">
-                                @csrf
-                                @method('DELETE')
-                                <button type="submit">Delete</button>
-                            </form>
+                            @if($user->id !== auth()->user()->id) <!-- Check if the user is not the connected user -->
+                                <a href="{{ route('users.edit', $user->id) }}">Update</a>
+                                <form method="POST" action="{{ route('users.destroy', $user->id) }}">
+                                    @csrf
+                                    @method('DELETE')
+                                    <button type="submit">Delete</button>
+                                </form>
+                            @endif
                         </td>
                     </tr>
                 @endforeach
             </tbody>
         </table>
+        <a href="{{ route('addadmin') }}">+</a>
     </div>
 @endsection

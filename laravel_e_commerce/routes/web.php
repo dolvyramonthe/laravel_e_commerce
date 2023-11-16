@@ -62,6 +62,10 @@ Route::get('/password', [UserController::class, 'showPasswordUpdateForm'])->name
 Route::put('/password/update', [UserController::class, 'updatePassword'])->name('password.update');
 
 Route::get('/manageadmin', [UserController::class, 'showManageAdmin'])->name('manageadmin')->middleware('auth', 'superadmin');
+
+Route::get('/addadmin', [UserController::class, 'create'])->name('addadmin');
+Route::put('/addadmin/add', [UserController::class, 'store'])->name('addadmin.add');
+
 Route::get('/users/{id}/edit', [UserController::class, 'edit'])->name('users.edit');
 Route::put('/users/{id}', [UserController::class, 'update'])->name('users.update');
 Route::delete('/users/{id}', [UserController::class, 'destroy'])->name('users.destroy');

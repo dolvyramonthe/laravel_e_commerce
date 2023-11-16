@@ -102,30 +102,7 @@ class UserController extends Controller
      */
     public function create()
     {
-        // Validation des données entrées pour la création d'utilisateur
-        $validatedData = $request->validate([
-            'name' => 'required|string|max:255',
-            'email' => 'required|email|unique:users,email',
-            'password' => 'required|string|min:8',
-            'role' => 'required|in:user,admin,superadmin', // Assurez-vous que le superadmin peut attribuer des rôles appropriés
-            'avatar' => 'image|mimes:jpeg,png,jpg,gif|max:2048',
-        ]);
-
-        // Création d'un nouvel utilisateur
-        $user = new User();
-        $user->name = $validatedData['name'];
-        $user->email = $validatedData['email'];
-        $user->password = Hash::make($validatedData['password']);
-        $user->role = $validatedData['role'];
-
-        if ($request->hasFile('avatar')) {
-            // Gestion de l'avatar
-            // ...
-        }
-
-        $user->save();
-
-        return redirect()->back()->with('success', 'User created successfully!');
+        return view('users.add-admin');
     }
 
     /**
@@ -136,7 +113,23 @@ class UserController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        // Validation des données entrées pour la création d'utilisateur
+        $validatedData = $request->validate([
+            'name' => 'required|string|max:255',
+            'email' => 'required|email|unique:users,email',
+            'password' => 'required|string|min:8',
+            'role' => 'required|in:user,admin,superadmin',
+        ]);
+
+        // Création d'un nouvel utilisateur
+        $user = new User();
+        $user->name = $validatedData['name'];
+        $user->email = $validatedData['email'];
+        $user->password = Hash::make($validatedData['password']);
+        $user->role = $validatedData['role'];
+        $user->save();
+
+        return redirect()->back()->with('success', 'User created successfully!');
     }
 
     /**
@@ -169,27 +162,6 @@ class UserController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    // public function update(Request $request, $id)
-    // {
-    //     $validatedData = $request->validate([
-    //         'name' => 'required|string|max:255',
-    //         'email' => 'required|email|unique:users,email,'.$id,
-    //         'role' => 'required|string|max:10', // Adjust as needed
-    //         'isActive' => 'required|boolean', // Assuming isActive is a boolean field
-    //     ]);
-
-    //     $user = User::findOrFail($id);
-
-    //     $user->name = $validatedData['name'];
-    //     $user->email = $validatedData['email'];
-    //     $user->role = $validatedData['role'];
-    //     $user->isActive = $validatedData['isActive'];
-
-    //     $user->save();
-
-    //     return redirect()->route('manageadmin')->with('success', 'User updated successfully!');
-    // }
-
     public function update(Request $request, $id)
     {
         $validatedData = $request->validate([
