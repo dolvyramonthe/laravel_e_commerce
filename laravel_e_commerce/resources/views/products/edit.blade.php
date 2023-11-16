@@ -16,8 +16,17 @@
         <label for="price">Prix:</label>
         <input type="number" name="price" step="0.01" value="{{ $product->price }}" required>
 
+        <label for="poppings">Poppings:</label>
+        <input type="text" name="poppings" value="{{ $product->poppings }}">
+
+        <label for="sugar_quantity">Quantité de sucre:</label>
+        <input type="number" name="sugar_quantity" value="{{ $product->sugar_quantity }}">
+
+        <label for="size">Taille :</label>
+        <input type="text" name="size" value="{{ $product->size ?? '' }}" required>
 
         <button type="submit">Update the product</button>
     </form>
 @endsection
+
 
