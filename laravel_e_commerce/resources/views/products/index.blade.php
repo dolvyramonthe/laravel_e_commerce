@@ -1,12 +1,35 @@
 @extends('layouts.header')
 
 @section('content')
+
+    <style>
+        
+        table {
+            border-collapse: collapse;
+            width: 100%;
+        }
+
+        th, td {
+            padding: 8px;
+            text-align: left;
+            vertical-align: middle; 
+        }
+
+        th {
+            background-color: #f2f2f2;
+        }
+
+        tr:nth-child(even) {
+            background-color: gray;
+        }
+
+    </style>
     <div>
         @auth
-        <h1>Liste des Produits</h1>
+        <h1 style="font-size: 24px; color: #fff; margin-bottom: 20px;">List Products</h1>
             <table>
                 <thead>
-                    <tr>
+                    <tr style="background-color: #f2f2f2;">
                         <th>Name</th>
                         <th>Description</th>
                         <th>Price</th>
@@ -38,21 +61,20 @@
                                 @endif
                             </td>
                             <td>
-                                <a href="{{ route('products.edit', $product->id) }}">Update</a>
+                                <a href="{{ route('products.edit', $product->id) }}" style="text-decoration: none; color: blue; margin-right: 10px;">Update</a>
                                 <form id="delete-form-{{ $product->id }}" method="POST" action="{{ route('products.destroy', $product->id) }}">
                                     @csrf
                                     @method('DELETE')
-                                    <button type="button" onclick="confirmDelete({{ $product->id }})">Delete</button>
+                                    <button type="button" onclick="confirmDelete({{ $product->id }})" style="text-decoration: none; color: red; margin-right: 10px;">Delete</button>
                                 </form>
                             </td>
                         </tr>
                     @endforeach
                 </tbody>
             </table>
-            <a href="{{ route('products.create') }}">+</a>
+            <a href="{{ route('products.create') }}" style="text-decoration: none; display: block; color: violet; margin-top: 20px; font-size: 20px;">Add +</a>
         @endauth
     </div>
-
     <script>
         function confirmDelete(userId) {
             if (confirm('Are you sure you want to delete this user?')) {

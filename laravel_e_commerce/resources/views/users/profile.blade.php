@@ -8,7 +8,7 @@
                     {{ session('success') }}
                 </div>
             @endif
-            <h1>User Profile</h1>
+            <h1 style="color: #fff; font-family: Arial;">User Profile</h1>
             <form method="POST" action="{{ route('profile.update') }}" enctype="multipart/form-data">
                 @csrf
                 @method('PUT')
@@ -32,4 +32,10 @@
             </form>
         @endauth
     </div>
+
+    <style>
+        .alert-success {
+            color: green;
+        }
+    </style>
 @endsection

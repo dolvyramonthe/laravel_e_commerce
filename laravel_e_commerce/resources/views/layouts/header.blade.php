@@ -39,7 +39,6 @@
             text-decoration: underline;
         }
 
-        /* Conteneur pour le contenu dynamique */
         .content-container {
             max-width: 800px;
             margin: 20px auto;
@@ -47,50 +46,6 @@
             background-color: #f9f9f9;
             border: 1px solid #ddd;
             border-radius: 5px;
-        }
-
-        .user-section{
-            font-family: Arial, sans-serif;
-            margin: 0;
-            padding: 20px;
-        }
-
-        .user-section div{
-            padding: 20px;
-            border-radius: 8px;
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-            max-width: 50px;
-            margin: 0;
-        }
-
-        .user-section h1{
-            color: #fff;
-        }
-
-        .user-section p{
-            margin-bottom: 20px;
-        }
-
-        .user-section ul{
-            list-style-type: none;
-            padding: 0;
-        }
-
-        .user-section li{
-            margin-bottom: 10px;
-        }
-
-        .user-section a{
-            display: inline-block;
-            padding: 8px 16px;
-            background-color: gray;
-            color: #fff;
-            text-decoration: none;
-            border-radius: 4px;
-        }
-
-        .user-section a:hover{
-            background-color: #0050a5;
         }
 
         .profile-form {
@@ -112,8 +67,9 @@
         }
 
         .form-group label {
-            display: block;
-            margin-bottom: 5px;
+            display: flex;
+            align-items: center;
+            margin-bottom: 10px;
             color: #333;
         }
 
@@ -179,15 +135,11 @@
         .admin-section a {
             display: inline-block;
             padding: 8px 16px;
-            background-color: gray;
             color: #fff;
             text-decoration: none;
             border-radius: 4px;
         }
 
-        .admin-section a:hover {
-            background-color: #0050a5;
-        }
     </style>
 </head>
 
