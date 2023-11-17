@@ -58,7 +58,17 @@ Route::get('/products/{id}/edit', [ProductController::class, 'edit'])->name('pro
 Route::put('/products/{id}', [ProductController::class, 'update'])->name('products.update');
 Route::delete('/products/{id}', [ProductController::class, 'destroy'])->name('products.destroy');
 
+// Route::get('/dashboard', [OrderController::class, 'dashboard'])->name('dashboard');
+// Route::get('/neworder', [OrderController::class, 'showAddOrderForm'])->name('neworder');
+// Route::put('/addorder', [OrderController::class, 'addOrder'])->name('addorder');
+// Route::put('/addorderproduct', [OrderController::class, 'addOrderProduct'])->name('addorderproduct');
+
+
 Route::get('/dashboard', [OrderController::class, 'dashboard'])->name('dashboard');
-Route::get('/neworder', [OrderController::class, 'showAddOrderForm'])->name('neworder');
-Route::put('/addorder', [OrderController::class, 'addOrder'])->name('addorder');
-Route::put('/addorderproduct', [OrderController::class, 'addOrderProduct'])->name('addorderproduct');
+Route::get('/orders', [OrderController::class, 'index'])->name('orders.index');
+Route::get('/orders/create', [OrderController::class, 'create'])->name('orders.create');
+Route::post('/orders/store', [OrderController::class, 'store'])->name('orders.store');
+Route::get('/orders/{id}/edit', [OrderController::class, 'edit'])->name('orders.edit');
+Route::put('/orders/{id}/addproduct', [OrderController::class, 'addProducts'])->name('orders.addproduct');
+Route::put('/orders/{id}/update', [OrderController::class, 'updateProduct'])->name('orders.update');
+Route::delete('/orders/{id}/cancel', [OrderController::class, 'cancel'])->name('orders.cancel');
