@@ -1,7 +1,7 @@
 @extends('layouts.header')
 
 @section('content')
-    <div>
+    <div class="admin-section">
         @auth
             <h1>Welcome, {{ auth()->user()->name }}!</h1>
             <div class="user-avatar">

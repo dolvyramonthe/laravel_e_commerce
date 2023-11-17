@@ -13,6 +13,7 @@
             <ul>
                 <li><a href="{{ route('profile') }}">Update Profile</a></li>
                 <li><a href="{{ route('password') }}">Update Password</a></li>
+                <li><a href="{{ route('dashboard') }}">Dashboard</a></li>
             </ul>
         @else
             <h1>Welcome to the user page</h1>

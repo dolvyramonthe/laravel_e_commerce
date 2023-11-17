@@ -10,5 +10,11 @@ class Product extends Model
     use HasFactory;
 
     protected $fillable = ['name', 'desc', 'price', 'image_path', 'is_available'];
+
+    public function price(): Attribute{
+        return Attribute::make(
+            get: fn($value) => str_replace('.', ',', $value / 100) . ' €'
+        );
+    }
  
 }
