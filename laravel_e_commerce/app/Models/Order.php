@@ -13,4 +13,10 @@ class Order extends Model
         'user_id',
         'status',
     ];
+
+    public function products()
+    {
+        return $this->belongsToMany(Product::class, 'order_products', 'order_id', 'product_id')
+            ->withPivot('quantity', 'total_amount');
+    }
 }
