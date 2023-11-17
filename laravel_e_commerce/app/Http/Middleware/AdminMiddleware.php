@@ -20,7 +20,7 @@ class AdminMiddleware
             return $next($request);
         }
 
-        return redirect('/'); // Redirect unauthorized users to homepage or login
+        return redirect('/');
     }
 
 }

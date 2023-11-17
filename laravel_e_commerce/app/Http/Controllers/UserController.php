@@ -82,24 +82,13 @@ class UserController extends Controller
             'password' => Hash::make($request->new_password),
         ]);
 
-        // $redirectRoute = '';
-        // if ($user->role === 'superadmin') {
-        //     $redirectRoute = 'superadmin';
-        // } else if ($user->role === 'admin') {
-        //     $redirectRoute = 'admin';
-        // } else if ($user->role === 'user') {
-        //     $redirectRoute = 'user';
-        // }
-
         return redirect()->back()->with('success', 'Password updated successfully!');
     }
 
     public function showManageAdmin()
     {
-        // Fetch all users
-        $users = User::all(); // Assuming your User model is named 'User'
+        $users = User::all();
 
-        // Pass the users data to the view
         return view('users.manageadmin', compact('users'));
     }
 
@@ -122,7 +111,6 @@ class UserController extends Controller
      */
     public function store(Request $request)
     {
-        // Validation des données entrées pour la création d'utilisateur
         $validatedData = $request->validate([
             'name' => 'required|string|max:255',
             'email' => 'required|email|unique:users,email',
@@ -130,7 +118,6 @@ class UserController extends Controller
             'role' => 'required|in:user,admin,superadmin',
         ]);
 
-        // Création d'un nouvel utilisateur
         $user = new User();
         $user->name = $validatedData['name'];
         $user->email = $validatedData['email'];
@@ -176,8 +163,8 @@ class UserController extends Controller
         $validatedData = $request->validate([
             'name' => 'required|string|max:255',
             'email' => 'required|email|unique:users,email,'.$id,
-            'role' => 'required|string|max:10', // Adjust as needed
-            'isActive' => 'required|boolean', // Assuming isActive is a boolean field
+            'role' => 'required|string|max:10',
+            'isActive' => 'required|boolean',
         ]);
 
         User::where('id', $id)->update($validatedData);

@@ -56,28 +56,24 @@
         }
 
         .user-section div{
-            background-color: #fff;
             padding: 20px;
             border-radius: 8px;
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0, 1);
-            max-width: 600px;
-            margin: 0 auto;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            max-width: 50px;
+            margin: 0;
         }
 
         .user-section h1{
-            text-align: center;
             color: #fff;
         }
 
         .user-section p{
-            text-align: center;
             margin-bottom: 20px;
         }
 
         .user-section ul{
             list-style-type: none;
             padding: 0;
-            text-align: center;
         }
 
         .user-section li{
@@ -87,7 +83,7 @@
         .user-section a{
             display: inline-block;
             padding: 8px 16px;
-            background-color: #0066cc;
+            background-color: gray;
             color: #fff;
             text-decoration: none;
             border-radius: 4px;
@@ -141,6 +137,55 @@
         }
 
         .profile-form button[type="submit"]:hover {
+            background-color: #0050a5;
+        }
+
+        .admin-section{
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .admin-section h1 {
+            color: #fff;
+            margin-bottom: 10px;
+        }
+
+        .user-avatar {
+            margin-bottom: 20px;
+        }
+
+        .user-avatar img {
+            max-width: 100px;
+            max-height: 100px;
+            border-radius: 50%;
+        }
+
+        .admin-section p {
+            margin-bottom: 20px;
+        }
+
+        .admin-section ul {
+            list-style-type: none;
+            padding: 0;
+        }
+
+        .admin-section li {
+            margin-bottom: 10px;
+        }
+
+        .admin-section a {
+            display: inline-block;
+            padding: 8px 16px;
+            background-color: gray;
+            color: #fff;
+            text-decoration: none;
+            border-radius: 4px;
+        }
+
+        .admin-section a:hover {
             background-color: #0050a5;
         }
     </style>
