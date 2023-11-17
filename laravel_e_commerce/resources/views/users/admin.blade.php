@@ -3,7 +3,7 @@
 @section('content')
 
     <style>
-        
+
         ul {
             list-style: none;
             padding: 0;
@@ -11,13 +11,13 @@
         }
         li {
             display: flex;
-            align-items: center; 
-            margin-bottom: 10px; 
+            align-items: center;
+            margin-bottom: 10px;
         }
         li img {
             max-width: 30px;
             max-height: 30px;
-            margin-right: 10px; 
+            margin-right: 10px;
         }
     </style>
     <div class="admin-section">
@@ -30,7 +30,7 @@
             </div>
             <p>Manage your profile:</p>
             <ul>
-            
+
                 <li>
                 <img src="https://cdn5.vectorstock.com/i/1000x1000/20/14/update-male-profile-vector-11592014.jpg" alt="update profile">
                     <a href="{{ route('profile') }}" style="color: red">Update Profile</a>
@@ -45,6 +45,12 @@
                 <img src="https://cdn-icons-png.flaticon.com/512/3875/3875970.png" alt="products management">
                     <a href="{{ route('products.index') }}" style="color: blue">Products Management</a>
                 </li>
+
+                <li>
+                <img src="https://cdn-icons-png.flaticon.com/512/3875/3875970.png" alt="products management">
+                    <a href="{{ route('ingredients.index') }}" style="color: blue">Ingredients Management</a>
+                </li>
+
             </ul>
         @endauth
     </div>

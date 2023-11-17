@@ -5,6 +5,7 @@ use App\Http\Controllers\UserController;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\RegisterController;
 use App\Http\Controllers\ProductController;
+use App\Http\Controllers\IngredientController;
 use App\Http\Controllers\OrderController;
 
 /*
@@ -58,11 +59,12 @@ Route::get('/products/{id}/edit', [ProductController::class, 'edit'])->name('pro
 Route::put('/products/{id}', [ProductController::class, 'update'])->name('products.update');
 Route::delete('/products/{id}', [ProductController::class, 'destroy'])->name('products.destroy');
 
-// Route::get('/dashboard', [OrderController::class, 'dashboard'])->name('dashboard');
-// Route::get('/neworder', [OrderController::class, 'showAddOrderForm'])->name('neworder');
-// Route::put('/addorder', [OrderController::class, 'addOrder'])->name('addorder');
-// Route::put('/addorderproduct', [OrderController::class, 'addOrderProduct'])->name('addorderproduct');
-
+Route::get('/ingredients', [IngredientController::class, 'index'])->name('ingredients.index');
+Route::get('/ingredients/create', [IngredientController::class, 'create'])->name('ingredients.create');
+Route::get('/ingredients/edit', [IngredientController::class, 'edit'])->name('ingredients.edit');
+Route::post('/ingredients', [IngredientController::class, 'store'])->name('ingredients.store');
+Route::put('/ingredients/{id}', [IngredientController::class, 'update'])->name('ingredients.update');
+Route::delete('/ingredients/{id}', [IngredientController::class, 'destroy'])->name('ingredients.destroy');
 
 Route::get('/dashboard', [OrderController::class, 'dashboard'])->name('dashboard');
 Route::get('/orders', [OrderController::class, 'index'])->name('orders.index');
