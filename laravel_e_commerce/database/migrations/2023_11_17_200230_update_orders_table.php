@@ -13,20 +13,14 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::table('order_products', function (Blueprint $table) {
-            $table->timestamps();
+        Schema::table('orders', function (Blueprint $table) {
+            $table->decimal('total_amount', 8, 2)->nullable(false)->after('status');
         });
     }
 
-    /**
-     * Reverse the migrations.
-     *
-     * @return void
-     */
     public function down()
     {
-        Schema::table('order_products', function (Blueprint $table) {
-            $table->timestamps();
-        });
+        Schema::table('orders', function (Blueprint $table) {
+            $table->decimal('total_amount', 8, 2)->nullable(false)->after('status');        });
     }
 };
