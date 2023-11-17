@@ -14,19 +14,16 @@ return new class extends Migration
     public function up()
     {
         Schema::table('order_products', function (Blueprint $table) {
-            $table->timestamps();
+            $table->integer('quantity')->nullable(false)->change();
+            $table->decimal('total_amount', 8, 2)->nullable(false)->change();
         });
     }
 
-    /**
-     * Reverse the migrations.
-     *
-     * @return void
-     */
     public function down()
     {
         Schema::table('order_products', function (Blueprint $table) {
-            $table->timestamps();
+            $table->integer('quantity')->nullable()->change();
+            $table->decimal('total_amount', 8, 2)->nullable()->change();
         });
     }
 };
