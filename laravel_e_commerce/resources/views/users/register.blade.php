@@ -3,16 +3,16 @@
 <head>
     <title>Registration</title>
     <style>
-        /* Styles pour le corps de la page */
+        
         body {
             font-family: Arial, sans-serif;
             margin: 0;
-            padding: 20px; /* Ajoute une marge pour l'espace autour du contenu */
+            padding: 20px; 
             background-image: url("https://t3.ftcdn.net/jpg/04/64/30/76/360_F_464307620_CYWfA00cdwwtYPxXMfFpbTjVjaFYmP93.jpg");
             background-size: cover;
         }
 
-        /* Styles pour le formulaire */
+        
         form {
             background-color: #fff;
             padding: 20px;
