@@ -14,10 +14,11 @@ class RedirectIfNotSuperAdmin
      * @param  \Closure(\Illuminate\Http\Request): (\Illuminate\Http\Response|\Illuminate\Http\RedirectResponse)  $next
      * @return \Illuminate\Http\Response|\Illuminate\Http\RedirectResponse
      */
+
     public function handle(Request $request, Closure $next)
     {
         if (Auth::check() && Auth::user()->role !== 'superadmin') {
-            return redirect('/'); // Redirect unauthorized users to the homepage or login page
+            return redirect('/');
         }
 
         return $next($request);

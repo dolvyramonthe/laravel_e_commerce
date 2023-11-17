@@ -25,7 +25,7 @@ class RegisterController extends Controller
             'name' => $request->name,
             'email' => $request->email,
             'password' => Hash::make($request->password),
-            'role' => 'user', // Default role for new users
+            'role' => 'user',
         ]);
 
         return redirect('/')->with('success', 'Registration successful. You can now log in.');
