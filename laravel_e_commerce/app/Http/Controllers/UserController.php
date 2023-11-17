@@ -82,6 +82,15 @@ class UserController extends Controller
             'password' => Hash::make($request->new_password),
         ]);
 
+        // $redirectRoute = '';
+        // if ($user->role === 'superadmin') {
+        //     $redirectRoute = 'superadmin';
+        // } else if ($user->role === 'admin') {
+        //     $redirectRoute = 'admin';
+        // } else if ($user->role === 'user') {
+        //     $redirectRoute = 'user';
+        // }
+
         return redirect()->back()->with('success', 'Password updated successfully!');
     }
 
@@ -129,7 +138,7 @@ class UserController extends Controller
         $user->role = $validatedData['role'];
         $user->save();
 
-        return redirect()->back()->with('success', 'User created successfully!');
+        return redirect()->route('manageadmin')->with('success', 'User created successfully!');
     }
 
     /**
