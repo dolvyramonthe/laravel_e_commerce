@@ -31,15 +31,25 @@ Route::post('/register', [RegisterController::class, 'register']);
 
 Route::get('/admin', [UserController::class, 'index'])->name('admin')->middleware('auth', 'admin');
 Route::get('/user', [UserController::class, 'index'])->name('user')->middleware('auth', 'user');
+Route::get('/superadmin', [UserController::class, 'index'])->name('superadmin')->middleware('auth', 'superadmin');
 
 Route::get('/profile', [UserController::class, 'showProfile'])->name('profile');
 Route::put('/profile/update', [UserController::class, 'updateProfile'])->name('profile.update');
 
 Route::get('/password', [UserController::class, 'showPasswordUpdateForm'])->name('password');
 Route::put('/password/update', [UserController::class, 'updatePassword'])->name('password.update');
+
+Route::get('/manageadmin', [UserController::class, 'showManageAdmin'])->name('manageadmin')->middleware('auth', 'superadmin');
+
+Route::get('/addadmin', [UserController::class, 'create'])->name('addadmin');
+Route::put('/addadmin/add', [UserController::class, 'store'])->name('addadmin.add');
+
+Route::get('/users/{id}/edit', [UserController::class, 'edit'])->name('users.edit');
+Route::put('/users/{id}', [UserController::class, 'update'])->name('users.update');
+Route::delete('/users/{id}', [UserController::class, 'destroy'])->name('users.destroy');
+
+
 Route::resource('products', ProductController::class)->middleware('auth', 'admin');
-
-
 Route::get('/products', [ProductController::class, 'index'])->name('products.index');
 Route::get('/products/{id}', [ProductController::class, 'show'])->name('products.show');
 Route::get('/products/create', [ProductController::class, 'create'])->name('products.create');

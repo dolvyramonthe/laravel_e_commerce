@@ -8,9 +8,10 @@
     <form action="{{ route('products.destroy', $product->id) }}" method="POST">
         @csrf
         @method('DELETE')
-        <button type="submit">Confirm deletion</button>
+
+        <button type="submit">yes</button>
     </form>
 
-    <a href="{{ route('products.index') }}">Cancel</a>
+    <a href="{{ route('products.index') }}">no</a>
 @endsection
 

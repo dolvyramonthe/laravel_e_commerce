@@ -195,9 +195,9 @@
     <nav>
         <ul>
             @auth <!-- If the user is authenticated -->
-                @if(!Request::is('admin', 'user')) <!-- If the user is not on admin or user page -->
-                    <li><a href="{{ auth()->user()->role === 'admin' ? route('admin') : route('user') }}">Home</a></li>
-                @endif
+            @if(!Request::is('superadmin', 'admin', 'user')) <!-- If the user is not on superadmin, admin, or user page -->
+                <li><a href="{{ auth()->user()->role === 'superadmin' ? route('superadmin') : (auth()->user()->role === 'admin' ? route('admin') : route('user')) }}">Home</a></li>
+            @endif
                 <li>
                     <form method="POST" action="{{ route('logout') }}">
                         @csrf
