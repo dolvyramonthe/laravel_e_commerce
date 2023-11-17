@@ -1,7 +1,7 @@
 @extends('layouts.header')
 
 @section('content')
-    <h1>Liste des Produits</h1>
+    <h1>Products List</h1>
 
     @foreach($products as $product)
         <div>
