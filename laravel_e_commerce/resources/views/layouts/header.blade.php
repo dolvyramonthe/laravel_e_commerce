@@ -193,6 +193,9 @@
 
 <body>
     <nav>
+        <div class="logo">
+        <img src="{{ asset('images/logo.png')}}" alt="logo" style="max-width: 100px; max-height: 100px;">
+    </div>
         <ul>
             @auth <!-- If the user is authenticated -->
             @if(!Request::is('superadmin', 'admin', 'user')) <!-- If the user is not on superadmin, admin, or user page -->
