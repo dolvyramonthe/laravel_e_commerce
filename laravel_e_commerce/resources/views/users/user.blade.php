@@ -6,13 +6,13 @@
 
         li {
             display: flex;
-            align-items: center; 
-            margin-bottom: 10px; 
+            align-items: center;
+            margin-bottom: 10px;
         }
         li img {
             max-width: 30px;
             max-height: 30px;
-            margin-right: 10px; 
+            margin-right: 10px;
         }
 
         .user-section {
@@ -50,7 +50,7 @@
 
                 <li>
                     <img src="https://as2.ftcdn.net/v2/jpg/03/08/45/53/1000_F_308455353_kNs9gRNlQuWLUwqFMgdmE0HKZy2boWfO.jpg" alt="dashboard">
-                    <a href="{{ route('dashboard') }}" style="color: blue">Dashboard</a>
+                    <a href="{{ route('orders.index') }}" style="color: blue">Dashboard</a>
                 </li>
             </ul>
         @endauth

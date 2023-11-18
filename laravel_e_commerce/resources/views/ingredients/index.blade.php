@@ -23,11 +23,16 @@
                         <td>{{ $ingredient->name }}</td>
                         <td>
                             <!-- Links to edit and delete ingredients -->
-                            <a href="{{ route('ingredients.edit', $ingredient->id) }}">Edit</a>
-                            <form method="POST" action="{{ route('ingredients.destroy', $ingredient->id) }}">
+                            <a href="{{ route('ingredients.edit', $ingredient->id) }}">Update</a>
+                            {{-- <form method="POST" action="{{ route('ingredients.destroy', $ingredient->id) }}">
                                 @csrf
                                 @method('DELETE')
-                                <button type="submit">Delete</button>
+                                <button type="button" onclick="confirmDelete({{ $ingredient->id }})">Delete</button>
+                            </form> --}}
+                            <form id="delete-form-{{ $ingredient->id }}" method="POST" action="{{ route('ingredients.destroy', $ingredient->id) }}">
+                                @csrf
+                                @method('DELETE')
+                                <button type="button" onclick="confirmDelete({{ $ingredient->id }})" style="text-decoration: none; color: red; margin-right: 10px;">Delete</button>
                             </form>
                         </td>
                     </tr>
@@ -37,4 +42,12 @@
     @else
         <p>No ingredients found.</p>
     @endif
+
+    <script>
+        function confirmDelete(ingredientId) {
+            if (confirm('Are you sure you want to delete this ingredient?')) {
+                document.getElementById('delete-form-' + ingredientId).submit();
+            }
+        }
+    </script>
 @endsection

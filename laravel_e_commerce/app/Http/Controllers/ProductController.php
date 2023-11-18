@@ -74,15 +74,13 @@ use Illuminate\Support\Facades\File;
 
         public function edit($id)
         {
-
             $product = Product::find($id);
             return view('products.edit', compact('product'));
         }
 
         public function update(Request $request, $id)
         {
-
-        $product = Product::find($id);
+            $product = Product::find($id);
 
             $product->update([
                 'name' => $request->input('name'),

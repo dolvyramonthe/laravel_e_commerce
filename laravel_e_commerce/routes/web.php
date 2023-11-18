@@ -61,16 +61,17 @@ Route::delete('/products/{id}', [ProductController::class, 'destroy'])->name('pr
 
 Route::get('/ingredients', [IngredientController::class, 'index'])->name('ingredients.index');
 Route::get('/ingredients/create', [IngredientController::class, 'create'])->name('ingredients.create');
-Route::get('/ingredients/edit', [IngredientController::class, 'edit'])->name('ingredients.edit');
+Route::get('/ingredients/{id}/edit', [IngredientController::class, 'edit'])->name('ingredients.edit');
 Route::post('/ingredients', [IngredientController::class, 'store'])->name('ingredients.store');
 Route::put('/ingredients/{id}', [IngredientController::class, 'update'])->name('ingredients.update');
 Route::delete('/ingredients/{id}', [IngredientController::class, 'destroy'])->name('ingredients.destroy');
 
-Route::get('/dashboard', [OrderController::class, 'dashboard'])->name('dashboard');
+// Route::get('/dashboard', [OrderController::class, 'dashboard'])->name('dashboard');
 Route::get('/orders', [OrderController::class, 'index'])->name('orders.index');
 Route::get('/orders/create', [OrderController::class, 'create'])->name('orders.create');
 Route::post('/orders/store', [OrderController::class, 'store'])->name('orders.store');
 Route::get('/orders/{id}/edit', [OrderController::class, 'edit'])->name('orders.edit');
-Route::put('/orders/{id}/addproduct', [OrderController::class, 'addProducts'])->name('orders.addproduct');
-Route::put('/orders/{id}/update', [OrderController::class, 'updateProduct'])->name('orders.update');
-Route::delete('/orders/{id}/cancel', [OrderController::class, 'cancel'])->name('orders.cancel');
+Route::get('/orders/{id}', [OrderController::class, 'show'])->name('orders.show');
+// Route::put('/orders/{id}/addproduct', [OrderController::class, 'addProducts'])->name('orders.addproduct');
+// Route::put('/orders/{id}/update', [OrderController::class, 'updateProduct'])->name('orders.update');
+Route::delete('/orders/{id}/cancel', [OrderController::class, 'destroy'])->name('orders.destroy');
