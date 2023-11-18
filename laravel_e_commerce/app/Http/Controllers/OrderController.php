@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 
-
+use Illuminate\Support\Facades\Auth;
 use App\Models\Product;
 use App\Models\User;
 use App\Models\Order;
@@ -12,114 +12,6 @@ use App\Models\Ingredient;
 use App\Http\Controllers\UserController;
 
 class OrderController extends Controller {
-
-    // public function dashboard() {
-    //     $user = auth()->user();
-    //     $orders = Order::with('products')->where('user_id', $user->id)->orderBy('created_at', 'desc')->get();
-
-    //     return view('orders.dashboard', compact('orders'));
-    // }
-
-    // public function create()
-    // {
-    //     $products = Product::all();
-    //     return view('orders.create', compact('products'));
-    // }
-
-    // public function store(Request $request)
-    // {
-    //     $user = auth()->user();
-
-    //     $validatedData = $request->validate([
-    //         'products.*' => 'required|exists:products,id',
-    //         'quantities.*' => 'required|numeric|min:1',
-    //     ]);
-
-    //     $order = new Order([
-    //         'user_id' => $user->id,
-    //         'status' => 'pending',
-    //     ]);
-    //     $order->save();
-
-    //     foreach ($validatedData['products'] as $key => $productId) {
-    //         $product = Product::findOrFail($productId);
-    //         $quantity = $validatedData['quantities'][$key];
-
-    //         $orderProduct = new OrderProduct([
-    //             'order_id' => $order->id,
-    //             'product_id' => $productId,
-    //             'quantity' => $quantity,
-    //             'total_amount' => $product->price * $quantity,
-    //         ]);
-    //         $orderProduct->save();
-    //     }
-
-    //     return redirect()->route('dashboard')->with('success', 'Order created successfully!');
-    // }
-
-    // public function edit($orderId)
-    // {
-    //     $order = Order::findOrFail($orderId);
-    //     $allProducts = Product::all(); // Fetch all products (adjust this query as needed)
-
-    //     return view('orders.edit', compact('order', 'allProducts'));
-    // }
-
-    // public function addProducts(Request $request, $orderId)
-    // {
-    //     $validatedData = $request->validate([
-    //         'products' => 'required|array',
-    //         'products.*.id' => 'required|exists:products,id',
-    //         'products.*.quantity' => 'required|integer|min:1',
-    //     ]);
-
-    //     $order = Order::findOrFail($orderId);
-
-    //     foreach ($validatedData['products'] as $item) {
-    //         $product = Product::findOrFail($item['id']);
-
-    //         // Check if the product already exists in the order
-    //         $existingProduct = $order->products()->where('product_id', $product->id)->first();
-
-    //         if ($existingProduct) {
-    //             // If the product already exists in the order, update the quantity
-    //             $existingProduct->pivot->quantity += $item['quantity'];
-    //             $existingProduct->pivot->save();
-    //         } else {
-    //             // If the product is not in the order, attach it with the given quantity
-    //             $order->products()->attach($product->id, ['quantity' => $item['quantity']]);
-    //         }
-    //     }
-
-    //     return redirect()->back()->with('success', 'Products added successfully to the order!');
-    // }
-
-    // public function updateProduct(Request $request, $orderId)
-    // {
-    //     $validatedData = $request->validate([
-    //         'product_id' => 'required|exists:order_products,product_id,order_id,' . $orderId,
-    //         'sugar_quantity' => 'required|integer|min:0',
-    //         'popings' => 'required|string',
-    //     ]);
-
-    //     $order = Order::findOrFail($orderId);
-
-    //     $product = $order->products()->where('product_id', $validatedData['product_id'])->firstOrFail();
-
-    //     $product->pivot->sugar_quantity = $validatedData['sugar_quantity'];
-    //     $product->pivot->popings = $validatedData['popings'];
-
-    //     $product->pivot->save();
-
-    //     return redirect()->back()->with('success', 'Product details updated successfully!');
-    // }
-
-    // public function cancel($id)
-    // {
-    //     // Logic to cancel the order
-    // }
-
-
 
     public function index()
     {
@@ -150,27 +42,42 @@ class OrderController extends Controller {
     public function store(Request $request)
     {
         $request->validate([
-            'user_id' => 'required', // Add any other necessary validation rules
-            'status' => 'required',
-            'total_amount' => 'required',
-            // Add validation rules for other fields as needed
+            'products' => 'required|array', // Ensure products are provided
+            'quantities.*' => 'required|integer|min:1', // Validate quantities for each product
         ]);
 
-        $orderData = $request->only(['user_id', 'status', 'total_amount']); // Get validated order data
+        $userId = Auth::id(); // Get the logged-in user's ID
+        $status = 'pending';
 
-        $order = new Order($orderData); // Create a new Order instance with validated data
-        $order->save();
-
-        // Handling products
+        // Retrieve selected products and quantities from the form
         $products = $request->input('products', []);
+        $quantities = $request->input('quantities', []);
 
-        foreach ($products as $productId) {
-            $product = Product::find($productId);
+        // Calculate total amount for the order
+        $totalAmount = 0;
 
-            // Create order-product relationship
-            $quantity = $request->input('quantity_'.$productId);
-            $totalAmount = $request->input('total_amount_'.$productId);
+        foreach ($products as $key => $productId) {
+            $quantity = $quantities[$key];
 
+            $product = Product::findOrFail($productId);
+            $totalAmount += $product->price * $quantity;
+        }
+
+        // Create the order with user ID and calculated total amount
+        $order = Order::create([
+            'user_id' => $userId,
+            'status' => $status,
+            'total_amount' => $totalAmount,
+        ]);
+
+        // Associate products with the order
+        foreach ($products as $key => $productId) {
+            $quantity = $quantities[$key];
+
+            $product = Product::findOrFail($productId);
+            $totalAmount = $product->price * $quantity; // Calculate total amount for the product
+
+            // Attach product to the order with quantity and total amount
             $order->products()->attach($productId, [
                 'quantity' => $quantity,
                 'total_amount' => $totalAmount,

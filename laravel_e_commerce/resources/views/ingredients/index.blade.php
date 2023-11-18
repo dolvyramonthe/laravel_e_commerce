@@ -51,7 +51,7 @@
                             <form method="POST" action="{{ route('ingredients.destroy', $ingredient->id) }}">
                                 @csrf
                                 @method('DELETE')
-                                <button type="submit"  style="text-decoration: none; color: red; margin-right: 10px;">Delete</button>
+                                <button type="button"  onclick="confirmDelete({{$ingredient->id}})" style="text-decoration: none; color: red; margin-right: 10px;">Delete</button>
                             </form>
                         </td>
                     </tr>
