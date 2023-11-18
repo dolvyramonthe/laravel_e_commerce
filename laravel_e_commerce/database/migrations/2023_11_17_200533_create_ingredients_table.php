@@ -13,7 +13,9 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('ingredients', function (Blueprint $table) {
+       
+        Schema::create('ingredients', function (Blueprint $table)
+         {
             $table->id();
             $table->string('name');
             $table->timestamps();

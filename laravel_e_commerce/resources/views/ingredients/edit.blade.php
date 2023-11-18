@@ -17,3 +17,4 @@
         <button type="submit">Update Ingredient</button>
     </form>
 @endsection
+
