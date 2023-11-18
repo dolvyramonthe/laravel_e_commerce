@@ -48,54 +48,6 @@
             border-radius: 5px;
         }
 
-        .profile-form {
-            background-color: #fff;
-            padding: 20px;
-            border-radius: 8px;
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-            max-width: 400px;
-            margin: 0 auto;
-        }
-
-        .profile-form h1 {
-            text-align: center;
-            color: #0066cc;
-        }
-
-        .form-group {
-            margin-bottom: 15px;
-        }
-
-        .form-group label {
-            display: flex;
-            align-items: center;
-            margin-bottom: 10px;
-            color: #333;
-        }
-
-        .form-group input[type="text"],
-        input[type="email"] {
-            width: 20%;
-            padding: 8px;
-            margin-bottom: 10px;
-            border: 1px solid #ccc;
-            border-radius: 4px;
-            box-sizing: border-box;
-        }
-
-        .profile-form button[type="submit"] {
-            padding: 10px 20px;
-            background-color: #0066cc;
-            color: #fff;
-            border: none;
-            border-radius: 4px;
-            cursor: pointer;
-        }
-
-        .profile-form button[type="submit"]:hover {
-            background-color: #0050a5;
-        }
-
         .admin-section{
             padding: 20px;
             border-radius: 8px;

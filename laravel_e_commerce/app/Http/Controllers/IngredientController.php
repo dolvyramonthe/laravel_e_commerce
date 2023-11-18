@@ -33,9 +33,12 @@ class IngredientController extends Controller
         return redirect()->route('ingredients.index')->with('success', 'Ingredient added successfully!');
     }
 
-    public function edit()
+    public function edit($id)
     {
-        return view('ingredients.edit');
+
+        $ingredient = Ingredient::findOrFail($id);
+        return view('ingredients.edit', compact('ingredient'));
+
     }
 
     // Method to update an existing ingredient

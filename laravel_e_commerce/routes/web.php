@@ -61,7 +61,7 @@ Route::delete('/products/{id}', [ProductController::class, 'destroy'])->name('pr
 
 Route::get('/ingredients', [IngredientController::class, 'index'])->name('ingredients.index');
 Route::get('/ingredients/create', [IngredientController::class, 'create'])->name('ingredients.create');
-Route::get('/ingredients/edit', [IngredientController::class, 'edit'])->name('ingredients.edit');
+Route::get('/ingredients/{id}/edit', [IngredientController::class, 'edit'])->name('ingredients.edit');
 Route::post('/ingredients', [IngredientController::class, 'store'])->name('ingredients.store');
 Route::put('/ingredients/{id}', [IngredientController::class, 'update'])->name('ingredients.update');
 Route::delete('/ingredients/{id}', [IngredientController::class, 'destroy'])->name('ingredients.destroy');

@@ -4,18 +4,46 @@
 
     <style>
 
-        label{
-            margin: 10px;
-            margin-bottom: 40px;
+        .edit-product {
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            max-width: 400px;
+            margin: 0 auto;
         }
 
-        label:nth-child(n+4),
-        input:nth-child(n+4),
-        textarea:nth-child(n+4) {
-            margin-top: 40px; 
+        .edit-product label {
+            display: block;
+            margin-bottom: 5px;
+            color: #333;
         }
+
+        .edit-product input[type="text"],
+        input[type="number"],
+        textarea {
+            width: 100%;
+            padding: 8px;
+            margin-bottom: 10px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            box-sizing: border-box;
+        }
+
+        .edit-product button[type="submit"] {
+            padding: 8px 16px;
+            border: none;
+            background-color: #4CAF50;
+            color: white;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+
+        .edit-product button[type="submit"]:hover {
+            background-color: #45a049;
+        }
+
     </style>
-    <div>
+    <div class="edit-product">
         @auth
             <h1 style="font-size: 24px; color: #fff; margin-bottom: 20px;">Edit product</h1>
 
