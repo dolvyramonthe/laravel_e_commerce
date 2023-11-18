@@ -1,16 +1,40 @@
 @extends('layouts.header')
 
 @section('content')
-    <h1>Ingredients</h1>
+
+    <style>
+
+        table {
+            border-collapse: collapse;
+            width: 50%;
+        }
+
+        th, td {
+            padding: 8px;
+            text-align: left;
+            vertical-align: middle; 
+        }
+
+        th {
+            background-color: #f2f2f2;
+        }
+
+        tr:nth-child(even) {
+            background-color: gray;
+        }
+
+    </style>
+
+    <h1 style="font-size: 24px; color: #fff; margin-bottom: 20px;">Ingredients</h1>
 
     <!-- Button to add a new ingredient -->
-    <a href="{{ route('ingredients.create') }}">Add New Ingredient</a>
+    <a href="{{ route('ingredients.create') }}" style="text-decoration: none; display: block; color: violet; margin-top: 20px; margin-bottom: 20px; font-size: 20px;">Add New Ingredient</a>
 
     <!-- Display the list of ingredients -->
     @if(count($ingredients) > 0)
         <table>
             <thead>
-                <tr>
+                <tr style="background-color: #f2f2f2;">
                     <th>ID</th>
                     <th>Name</th>
                     <th>Actions</th>

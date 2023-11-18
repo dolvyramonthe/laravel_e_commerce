@@ -47,7 +47,7 @@
                 </li>
 
                 <li>
-                <img src="https://cdn-icons-png.flaticon.com/512/3875/3875970.png" alt="products management">
+                <img src="https://cdn-icons-png.flaticon.com/512/2770/2770013.png" alt="ingredients management">
                     <a href="{{ route('ingredients.index') }}" style="color: blue">Ingredients Management</a>
                 </li>
 
