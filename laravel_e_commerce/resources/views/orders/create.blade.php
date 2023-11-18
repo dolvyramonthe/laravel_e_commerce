@@ -7,39 +7,6 @@
         <form method="POST" action="{{ route('orders.store') }}">
             @csrf
 
-            <!-- User Selection (if applicable) -->
-            <!-- Add user selection options if orders are associated with users -->
-            <div class="form-group">
-                <label for="user_id">User:</label>
-                <select id="user_id" name="user_id">
-                    <!-- Populate with user options if applicable -->
-                    <!-- Example: -->
-                    <!-- <option value="1">User 1</option> -->
-                    <!-- <option value="2">User 2</option> -->
-                </select>
-            </div>
-
-            <!-- Order Details -->
-            <div class="form-group">
-                <label for="status">Status:</label>
-                <input type="text" id="status" name="status" value="pending" required>
-            </div>
-
-            <div class="form-group">
-                <label for="total_amount">Total Amount:</label>
-                <input type="number" id="total_amount" name="total_amount" step="0.01" required>
-            </div>
-
-            {{-- <!-- Product Selection -->
-            <div class="form-group">
-                <label for="products">Products:</label>
-                <select id="products" name="products[]" multiple>
-                    @foreach($products as $product)
-                        <option value="{{ $product->id }}">{{ $product->name }}</option>
-                    @endforeach
-                </select>
-            </div> --}}
-
             <!-- Add or Remove Products -->
             <div id="product-fields">
                 <!-- Initial product selection fields -->
@@ -68,9 +35,6 @@
                 <label for="quantities">Quantities:</label>
                 <input type="number" id="quantities" name="quantities[]" min="1" value="1" required>
             </div>
-
-            <!-- Add or Remove Products Button (if applicable) -->
-            <!-- Implement buttons to add or remove products from the order -->
 
             <button type="submit" class="btn btn-primary">Create Order</button>
         </form>

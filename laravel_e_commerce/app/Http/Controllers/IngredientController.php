@@ -35,10 +35,9 @@ class IngredientController extends Controller
 
     public function edit($id)
     {
-
         $ingredient = Ingredient::findOrFail($id);
-        return view('ingredients.edit', compact('ingredient'));
 
+        return view('ingredients.edit', compact('ingredient'));
     }
 
     // Method to update an existing ingredient

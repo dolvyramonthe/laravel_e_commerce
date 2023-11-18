@@ -12,7 +12,7 @@
         th, td {
             padding: 8px;
             text-align: left;
-            vertical-align: middle; 
+            vertical-align: middle;
         }
 
         th {
@@ -47,16 +47,11 @@
                         <td>{{ $ingredient->name }}</td>
                         <td>
                             <!-- Links to edit and delete ingredients -->
-                            <a href="{{ route('ingredients.edit', $ingredient->id) }}">Update</a>
-                            {{-- <form method="POST" action="{{ route('ingredients.destroy', $ingredient->id) }}">
+                            <a href="{{ route('ingredients.edit', $ingredient->id) }}" style="text-decoration: none; color: blue; margin-right: 10px;">Edit</a>
+                            <form method="POST" action="{{ route('ingredients.destroy', $ingredient->id) }}">
                                 @csrf
                                 @method('DELETE')
-                                <button type="button" onclick="confirmDelete({{ $ingredient->id }})">Delete</button>
-                            </form> --}}
-                            <form id="delete-form-{{ $ingredient->id }}" method="POST" action="{{ route('ingredients.destroy', $ingredient->id) }}">
-                                @csrf
-                                @method('DELETE')
-                                <button type="button" onclick="confirmDelete({{ $ingredient->id }})" style="text-decoration: none; color: red; margin-right: 10px;">Delete</button>
+                                <button type="button"  onclick="confirmDelete({{$ingredient->id}})" style="text-decoration: none; color: red; margin-right: 10px;">Delete</button>
                             </form>
                         </td>
                     </tr>
