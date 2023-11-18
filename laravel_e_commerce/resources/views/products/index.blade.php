@@ -3,7 +3,7 @@
 @section('content')
 
     <style>
-        
+
         table {
             border-collapse: collapse;
             width: 100%;
@@ -12,7 +12,7 @@
         th, td {
             padding: 8px;
             text-align: left;
-            vertical-align: middle; 
+            vertical-align: middle;
         }
 
         th {
@@ -76,9 +76,9 @@
         @endauth
     </div>
     <script>
-        function confirmDelete(userId) {
-            if (confirm('Are you sure you want to delete this user?')) {
-                document.getElementById('delete-form-' + userId).submit();
+        function confirmDelete(productId) {
+            if (confirm('Are you sure you want to delete this product?')) {
+                document.getElementById('delete-form-' + productId).submit();
             }
         }
     </script>
