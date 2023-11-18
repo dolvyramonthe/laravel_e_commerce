@@ -10,7 +10,27 @@
         <ul>
             @foreach ($order->products as $product)
                 <li>
+                    <h3>{{ $product->name }}</h3>
+                </li>
+
+                <li>
+                    <p>Description: {{ $product->desc }}</p>
+                </li>
+
+                <li>
+                    <p>Price: {{ $product->price }}</p>
+                </li>
+
+                <li>
                     {{ $product->name }} (Quantity: {{ $product->pivot->quantity }}, Total Amount: {{ $product->pivot->total_amount }})
+                </li>
+
+                <li>
+                    @if ($product->image_path)
+                        <img src="{{ asset('storage/' . $product->image_path) }}" alt="{{ $product->name }} Image">
+                    @else
+                        <p>No image available</p>
+                    @endif
                 </li>
             @endforeach
         </ul>

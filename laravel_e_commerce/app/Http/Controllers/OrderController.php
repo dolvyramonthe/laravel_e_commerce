@@ -8,7 +8,7 @@ use Illuminate\Http\Request;
 use App\Models\Product;
 use App\Models\User;
 use App\Models\Order;
-use App\Models\OrderProduct;
+use App\Models\Ingredient;
 use App\Http\Controllers\UserController;
 
 class OrderController extends Controller {

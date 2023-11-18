@@ -3,6 +3,7 @@
 @section('content')
     <div class="container">
         <h1>All Orders</h1>
+        <a href="{{ route('orders.create') }}">New Order</a>
         @if(count($orders) > 0)
             <table class="table">
                 <thead>
