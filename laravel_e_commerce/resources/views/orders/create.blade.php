@@ -1,8 +1,52 @@
 @extends('layouts.header')
 
 @section('content')
+
+    <style>
+
+        .container {
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            max-width: 400px;
+            margin: 0 auto;
+        }
+
+        .product-field label {
+            display: block;
+            margin-bottom: 5px;
+            color: #333;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 5px;
+            color: #333;
+        }
+
+        .form-group input[type="number"] {
+            width: 100%;
+            padding: 8px;
+            margin-bottom: 10px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            box-sizing: border-box;
+        }
+        .container button[type="submit"] {
+            padding: 8px 16px;
+            border: none;
+            background-color: #4CAF50;
+            color: white;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+
+        .container button[type="submit"]:hover {
+            background-color: #45a049;
+        }
+    </style>
     <div class="container">
-        <h1>Create New Order</h1>
+        <h1 style="font-size: 24px; color: #fff; margin-bottom: 20px;">Create New Order</h1>
 
         <form method="POST" action="{{ route('orders.store') }}">
             @csrf
